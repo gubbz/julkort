@@ -9,10 +9,11 @@ Create new branch for feature:
 `git checkout -b <branch_name>`
 
 When done:
-`git add .`
-`git commit -m 'Commit message'`
+1. `git add .`
 
-`git checkout master`
-`git pull`
-`git merge <branch_name>`
-`git push`
+2. `git commit -m 'Commit message'`
+
+3. `git checkout master`
+4. `git pull`
+5. `git merge <branch_name>`
+6. `git push`
