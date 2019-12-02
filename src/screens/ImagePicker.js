@@ -4,7 +4,6 @@ import {Button, Image, View} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
-import * as FileSystem from "expo-file-system";
 
 export default class ImagePickerScreen extends Component {
     state = {
@@ -35,13 +34,17 @@ export default class ImagePickerScreen extends Component {
     _pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
-            allowsEditing: true,
             aspect: [4, 3],
+            base64: true,
             quality: 1
+        }).then(res => {
+            alert(res.base64);
         });
 
         if (!result.cancelled)
-            this.setState({image: result.uri});
+            this.setState({image: result.uri}, () => {
+                alert(this.state.image)
+            });
     };
 
     render() {
@@ -54,7 +57,7 @@ export default class ImagePickerScreen extends Component {
                 />
                 {image &&
                 <View>
-                    <Image source={{uri: image}} style={{width: 200, height: 200}}/>
+                    <Image source={{uri: image}} style={{width: 300, height: 200}}/>
                     <Button
                         title="Continue"
                         onPress={() => this.props.navigation.navigate('ImageEditor', {
