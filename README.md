@@ -1,4 +1,4 @@
-# JulkortsApp 
+# JulkortsApp 🎄
 
 ## Create component:
 1. Create a new class in screens, see Home.js for reference
